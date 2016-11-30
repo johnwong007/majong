@@ -53,7 +53,7 @@ function LoginFragment:initUI()
     self.m_pBg:addChild(btnLogin,1)
 
     self.m_pTouristLogin = CMButton.new({normal = {"picdata/login/btn_traveler.png"},
-        pressed = {"picdata/login/btn_ traveler.png"}},
+        pressed = {"picdata/login/btn_traveler.png"}},
         function () self:touristLogin() end, nil, {changeAlpha = false})
     self.m_pTouristLogin:setPosition(bgWidth/2, bgHeight/2-60)
     self.m_pBg:addChild(self.m_pTouristLogin,1)

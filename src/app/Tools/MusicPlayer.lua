@@ -1,5 +1,6 @@
 --[[声音资源文件]]
-MUSIC_FILE_BACKGROUND 			="scene/sounds/background.mp3"
+MUSIC_FILE_BACKGROUND 			="sounds/background.mp3"
+MUSIC_FILE_BACKGROUND2 			="sounds/background2.mp3"
 EFFECT_FILE_DISPATCH           ="scene/sounds/card.wav"
 EFFECT_FILE_FOLD               ="scene/sounds/fold_cards.mp3"
 EFFECT_FILE_CHECK              ="scene/sounds/check2.mp3"
@@ -63,6 +64,7 @@ function MusicPlayer:ctor()
 	SimpleAudioEngine:getInstance():preloadEffect( cc.FileUtils:getInstance():fullPathForFilename(EFFECT_FILE_DISPATCH_CARD) )
 	SimpleAudioEngine:getInstance():preloadEffect( cc.FileUtils:getInstance():fullPathForFilename(EFFECT_FILE_PRESS_BUTTON) )
 	SimpleAudioEngine:getInstance():preloadMusic( cc.FileUtils:getInstance():fullPathForFilename(MUSIC_FILE_BACKGROUND) )
+	SimpleAudioEngine:getInstance():preloadMusic( cc.FileUtils:getInstance():fullPathForFilename(MUSIC_FILE_BACKGROUND2) )
     
 	-- set default volume
 	SimpleAudioEngine:getInstance():setEffectsVolume(1)
@@ -239,11 +241,27 @@ function MusicPlayer:playWaitForSound()
 	end
 end
 
-function MusicPlayer:playBackgroundMusic()
-	if(self.shareSetting:getSoundEnable()) then
-		SimpleAudioEngine:getInstance():playMusic(cc.FileUtils:getInstance():fullPathForFilename(MUSIC_FILE_BACKGROUND),true)
+function MusicPlayer:playBackgroundMusic(nId)
+	if(self.shareSetting:getMusicEnable()) then
+		if nId then
+			SimpleAudioEngine:getInstance():playMusic(cc.FileUtils:getInstance():fullPathForFilename(MUSIC_FILE_BACKGROUND2),true)
+		else	
+			SimpleAudioEngine:getInstance():playMusic(cc.FileUtils:getInstance():fullPathForFilename(MUSIC_FILE_BACKGROUND),true)
+		end
 	end
 end
+
+-- function MusicPlayer:pauseBackgroundMusic()
+-- 	if self.shareSetting:getMusicEnable() then
+-- 		SimpleAudioEngine:getInstance():pauseBackgroundMusic()
+-- 	end
+-- end
+
+-- function MusicPlayer:resumeBackgroundMusic()
+-- 	if self.shareSetting:getMusicEnable() then
+-- 		SimpleAudioEngine:getInstance():resumeBackgroundMusic()
+-- 	end
+-- end
 
 function MusicPlayer:stopBackgroundMusic()
 	if(self.shareSetting:getSoundEnable()) then

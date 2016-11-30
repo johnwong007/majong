@@ -10,7 +10,7 @@ require("app.Logic.Room.TourneyGuideReceiver")
 require("app.Network.ParseKeyValue")
 require("app.Network.Http.DBHttpRequest")
 require("app.architecture.global.GlobalConfig")
-
+local MusicPlayer = require("app.Tools.MusicPlayer")
 local g_tips = {"您正以游客身份登录游戏...","正在为您登录帐号"}
 
 local LoginPresenter = class("LoginPresenter", function()
@@ -29,6 +29,7 @@ function LoginPresenter:start()
 	self.m_pTcpRequest = TcpCommandRequest:shareInstance()
 	self.m_pTcpRequest:addObserver(self)
 	self:initLogin()
+	MusicPlayer:getInstance():playBackgroundMusic()
 	return self
 end
 

@@ -44,7 +44,7 @@ function LoadingFragment:initUI()
     bgWidth = self.viewRect.width
     bgHeight = self.viewRect.height
     if self.tipsBg then
-        local filename = "picdata/public/slice01_01.png"
+        local filename = "picdata/public/img_square1.png"
         self.m_pBg = cc.ui.UIImage.new(filename, {scale9 = self.scale9})
         self.m_pBg:align(display.CENTER, CONFIG_SCREEN_WIDTH/2, CONFIG_SCREEN_HEIGHT/2)
             :addTo(self)

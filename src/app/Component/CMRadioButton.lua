@@ -15,6 +15,7 @@ function CMRadioButton:ctor(o,params)
 	self.m_pHint = self.params.hint
 	self.m_pHintColorOff = self.params.hintColorOff or cc.c3b(255,255,255)
 	self.m_pHintColorOn = self.params.hintColorOn or cc.c3b(255,255,255)
+	self.m_pCallback = self.params.callback
 	self:initUI()
 end
 
@@ -62,6 +63,9 @@ function CMRadioButton:onMenuCallBack()
     	end
 	end
 	self.m_bIsSelected = not self.m_bIsSelected
+	if self.m_pCallback then
+		self.m_pCallback(self.m_bIsSelected)
+	end
 end
 
 function CMRadioButton:isSelected()

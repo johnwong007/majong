@@ -8,6 +8,7 @@ s_boolIsShowNineSeat = "s_boolIsShowNineSeat" --是否显示九人桌
 s_boolIsHideSixSeat = "s_boolIsHideSixSeat" --是否隐藏 六人桌
 s_boolIsHideNineSeat = "s_boolIsHideNineSeat" --是否隐藏 九人桌
 
+s_boolIsMusicEnable     = "s_boolIsMusicEnable"   --背景音乐
 s_boolIsSoundEnable     = "s_boolIsSoundEnable"   --声音
 s_boolIsVibrateEnable     = "s_boolIsVibrateEnable"   --震动
 s_boolIsBubbleEnable    = "s_boolIsBubbleEnable"  --聊天
@@ -270,6 +271,13 @@ function UserDefaultSetting:setFreeGoldTimes(times)
 end
 function UserDefaultSetting:getSoundEnable()
 	return self.m_isSoundEnable
+end
+function UserDefaultSetting:setMusicEnable(value)
+    sharedUserDefault:setBoolForKey(s_boolIsMusicEnable, value)
+	sharedUserDefault:flush()
+end
+function UserDefaultSetting:getMusicEnable()
+	return sharedUserDefault:getBoolForKey(s_boolIsMusicEnable, true)
 end
 function UserDefaultSetting:getVibrateEnable()
 	return self.m_isVibrateEnable
