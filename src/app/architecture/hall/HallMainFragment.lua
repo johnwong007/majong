@@ -261,14 +261,16 @@ function HallMainFragment:initUI()
 end
 
 function HallMainFragment:createRoom()
-	-- CMOpen(require("app.architecture.components.CommonFragment"), self)
-	-- local layer = require("app.architecture.components.CommonFragment"):new()
-	-- layer:create()
-	-- self:addChild(layer, 10, 10)
+    CMOpen(require("app.architecture.hall.HallCreateRoomFragment"), self, {
+        title = "创建房间",
+        }, true)
 end
 
 function HallMainFragment:joinRoom()
-	
+    CMOpen(require("app.architecture.hall.HallJoinRoomFragment"), self, {
+        title = "加入房间",
+        viewType = 1
+        }, true)
 end
 
 function HallMainFragment:toShare()

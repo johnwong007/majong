@@ -1,6 +1,8 @@
 --[[声音资源文件]]
 MUSIC_FILE_BACKGROUND 			="sounds/background.mp3"
+MUSIC_FILE_BACKGROUND 			="sounds/bgMain.mp3"
 MUSIC_FILE_BACKGROUND2 			="sounds/background2.mp3"
+MUSIC_FILE_BACKGROUND2 			="sounds/bgFight.mp3"
 EFFECT_FILE_DISPATCH           ="scene/sounds/card.wav"
 EFFECT_FILE_FOLD               ="scene/sounds/fold_cards.mp3"
 EFFECT_FILE_CHECK              ="scene/sounds/check2.mp3"

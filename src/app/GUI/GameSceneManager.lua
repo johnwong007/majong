@@ -25,6 +25,7 @@ GameSceneManager.AllScene = {
 	ReplayView   = 16,
 	TestScene    = 999,
 	HallView     = 17,
+	RoomView     = 18,
 }
 GameSceneManager.AllLayer = {
 	ZIDINGYI  = 102,				--自定义牌局
@@ -150,6 +151,8 @@ function GameSceneManager:switchSceneWithType(sceneType,data)
 	    scene = require("app.architecture.login.LoginScene"):new()
 	elseif sceneType ==  GameSceneManager.AllScene.HallView then
 	    scene = require("app.architecture.hall.HallScene"):new()
+	elseif sceneType ==  GameSceneManager.AllScene.RoomView then
+	    scene = require("app.architecture.room.RoomScene"):new()
 	elseif sceneType ==  GameSceneManager.AllScene.TourneyList then
 		-- data.nType = data.nType or eMatchListRecommend
 		-- scene = require("app.GUI.Tourney.TourneyList"):scene(data.nType)

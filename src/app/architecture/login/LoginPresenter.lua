@@ -29,6 +29,7 @@ function LoginPresenter:start()
 	self.m_pTcpRequest = TcpCommandRequest:shareInstance()
 	self.m_pTcpRequest:addObserver(self)
 	self:initLogin()
+	MusicPlayer:getInstance():stopBackgroundMusic()
 	MusicPlayer:getInstance():playBackgroundMusic()
 	return self
 end

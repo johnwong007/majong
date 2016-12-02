@@ -9,3 +9,10 @@ function QDataPlayer:new()
 end
 
 QDataPlayer:new()
+
+local socket = require("socket")
+if not QDataPlayer.data.userPotraitUri then
+	math.randomseed(socket.gettime()*1000)
+    local randomValue = math.random(12)
+    QDataPlayer.data.userPotraitUri = "picdata/portrait/portrait"..randomValue..".png"
+end

@@ -1,16 +1,19 @@
 local HallMainContract = require("app.architecture.hall.HallMainContract")
+local MusicPlayer = require("app.Tools.MusicPlayer")
 
 local HallMainPresenter = class("HallMainPresenter", function()
 		return HallMainContract.Presenter:new()
 	end)
 
 function HallMainPresenter:ctor(o,params)
-	self.m_pHallDataRepository = params.repository
-	self.m_pHallMainView = params.view
-	self.m_pHallMainView:setPresenter(self)
+	self.m_pDataRepository = params.repository
+	self.m_pView = params.view
+	self.m_pView:setPresenter(self)
 end
 
 function HallMainPresenter:start()
+	-- MusicPlayer:getInstance():stopBackgroundMusic()
+	-- MusicPlayer:getInstance():playBackgroundMusic()
 	return self
 end
 

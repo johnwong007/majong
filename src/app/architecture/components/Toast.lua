@@ -34,7 +34,7 @@ function Toast:ctor(params)
 end
 
 function Toast:initUI()
-	local bg = cc.ui.UIImage.new("picdata/public_new/bg_tc_tips.png",{scale9=true})
+	local bg = cc.ui.UIImage.new("picdata/public/img_square1.png",{scale9=true})
  	bg:setLayoutSize(652, 348)
 	bg:align(display.CENTER, CONFIG_SCREEN_WIDTH/2, CONFIG_SCREEN_HEIGHT/2)
 		:addTo(self)
@@ -66,7 +66,7 @@ function Toast:initUI()
 		if string.len(self.params.text)< 36 then
 			sTip = cc.ui.UILabel.new({
 				text = self.params.text or "",
-				color = cc.c3b(255,255,255),
+				color = cc.c3b(125,0,0),
 				size = 28,
 				-- dimensions = cc.size(bgWidth - 160, 0),
 				})
@@ -74,7 +74,7 @@ function Toast:initUI()
 		else
 			sTip = cc.ui.UILabel.new({
 				text = self.params.text or "",
-				color = cc.c3b(255,255,255),
+				color = cc.c3b(125,0,0),
 				size = 28,
 				textAlign = cc.TEXT_ALIGNMENT_LEFT,
 				-- align = cc.TEXT_ALIGNMENT_CENTER,

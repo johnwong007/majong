@@ -19,6 +19,8 @@ function MyApp:run()
     self:loadPatches()
     require("app.GUI.GameSceneManager")
     GameSceneManager:switchSceneWithType(GameSceneManager.AllScene.LoginView)
+    -- require("app.Component.CMCommon")
+    -- GameSceneManager:switchSceneWithType(GameSceneManager.AllScene.RoomView)
 end
 
 --[[加载补丁包]]

@@ -16,6 +16,7 @@ function CMRadioButton:ctor(o,params)
 	self.m_pHintColorOff = self.params.hintColorOff or cc.c3b(255,255,255)
 	self.m_pHintColorOn = self.params.hintColorOn or cc.c3b(255,255,255)
 	self.m_pCallback = self.params.callback
+	self.m_pHintOffset = self.params.hintOffset or cc.p(0,0)
 	self:initUI()
 end
 
@@ -42,8 +43,8 @@ function CMRadioButton:initUI()
 	        align = cc.ui.TEXT_ALIGN_LEFT,
 	        font  = "FZZCHJW--GB1-0",
     	})
-		self.m_pHintLabel:align(display.LEFT_CENTER, self.m_pImageButton:getPositionX()+size.width,
-			self.m_pImageButton:getPositionY())
+		self.m_pHintLabel:align(display.LEFT_CENTER, self.m_pImageButton:getPositionX()+size.width+self.m_pHintOffset.x,
+			self.m_pImageButton:getPositionY()+self.m_pHintOffset.y)
 		self:addChild(self.m_pHintLabel)
 	end
 end

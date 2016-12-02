@@ -7,7 +7,7 @@ local HallSettingFragment = class("HallSettingFragment", function()
 	end)
 
 function HallSettingFragment:ctor(params)
-	self.params = params
+	self.params = params or {}
 	if UserDefaultSetting:getInstance():getMusicEnable() then
 		self.musicValue = 1
 	else
@@ -62,14 +62,50 @@ function HallSettingFragment:saveData()
 end
 
 function HallSettingFragment:initUI()
-	self.m_pLogout = CMTextButton:new({
-        textColorN = cc.c3b(125, 0, 0),
-        textColorS = cc.c3b(225, 0, 0),
-        text  = "退出登陆",
-        callback  = handler(self, self.logout)
-    })
-    self.m_pLogout:align(display.CENTER, CONFIG_SCREEN_WIDTH/2, CONFIG_SCREEN_HEIGHT/2-self.bgHeight/2+100)
-    self:addChild(self.m_pLogout)  
+	if self.params.btnType then
+		if self.params.callback then
+	    	self.m_pBtnConfirm = CMButton.new({normal = {"picdata/public/popup/btn_confirm.png"},
+		        pressed = {"picdata/public/popup/btn_confirm.png"}},
+		        function() self.params.callback() end, nil, {changeAlpha = true})
+	    else
+	    	self.m_pBtnConfirm = CMButton.new({normal = {"picdata/public/popup/btn_confirm.png"},
+		        pressed = {"picdata/public/popup/btn_confirm.png"}},
+		        function() CMClose(self, true) end, nil, {changeAlpha = true})
+	    end
+	    self.m_pBtnConfirm:setPosition(CONFIG_SCREEN_WIDTH/2, CONFIG_SCREEN_HEIGHT/2-self.bgHeight/2+100)
+	    self:addChild(self.m_pBtnConfirm)
+		local confirmLabel = cc.ui.UILabel.new({
+		        color = cc.c3b(255, 255, 236),
+		        text  = "申请解散",
+		        size  = 28,
+		        font  = "font/FZZCHJW--GB1-0.TTF",
+	        	})
+	    confirmLabel:enableShadow(cc.c4b(0,0,0,190),cc.size(2,-2))
+	    self.m_pBtnConfirm:setButtonLabel("normal", confirmLabel)
+	else
+		-- self.m_pLogout = CMTextButton:new({
+	 --        textColorN = cc.c3b(125, 0, 0),
+	 --        textColorS = cc.c3b(225, 0, 0),
+	 --        text  = "退出登陆",
+	 --        callback  = handler(self, self.logout)
+	 --    })
+	 --    self.m_pLogout:align(display.CENTER, CONFIG_SCREEN_WIDTH/2, CONFIG_SCREEN_HEIGHT/2-self.bgHeight/2+100)
+	 --    self:addChild(self.m_pLogout)  
+
+	    self.m_pBtnConfirm = CMButton.new({normal = {"picdata/public/popup/btn_confirm.png"},
+	        pressed = {"picdata/public/popup/btn_confirm.png"}},
+	        handler(self, self.logout), nil, {changeAlpha = true})
+	    self.m_pBtnConfirm:setPosition(CONFIG_SCREEN_WIDTH/2, CONFIG_SCREEN_HEIGHT/2-self.bgHeight/2+100)
+	    self:addChild(self.m_pBtnConfirm)
+		local confirmLabel = cc.ui.UILabel.new({
+		        color = cc.c3b(255, 255, 236),
+		        text  = "退出登陆",
+		        size  = 28,
+		        font  = "font/FZZCHJW--GB1-0.TTF",
+	        	})
+	    confirmLabel:enableShadow(cc.c4b(0,0,0,190),cc.size(2,-2))
+	    self.m_pBtnConfirm:setButtonLabel("normal", confirmLabel)
+	end
 
     -- self.musicImage = cc.ui.UIImage.new("picdata/hall/setting/img_on.png")
     -- self.musicImage:align(display.CENTER, self.m_pLogout:getPositionX(), self.m_pLogout:getPositionY()+100)
@@ -90,7 +126,7 @@ function HallSettingFragment:initUI()
 	self.musicSlider:setMaximumValue(1)
 	self.musicSlider:setMinimumValue(0)
 	self.musicSlider:setValue(self.musicValue)
-	self.musicSlider:setPosition(self.m_pLogout:getPositionX()-15, self.m_pLogout:getPositionY()+100)
+	self.musicSlider:setPosition(self.m_pBtnConfirm:getPositionX()-15, self.m_pBtnConfirm:getPositionY()+100)
 	self:addChild(self.musicSlider, 1)
 	local sprite4 = cc.Sprite:create("picdata/hall/setting/img_off.png")
 	local sprite5 = cc.Sprite:create("picdata/hall/setting/img_on.png")
@@ -102,7 +138,7 @@ function HallSettingFragment:initUI()
 	self.soundSlider:setMaximumValue(1)
 	self.soundSlider:setMinimumValue(0)
 	self.soundSlider:setValue(self.soundValue)
-	self.soundSlider:setPosition(self.m_pLogout:getPositionX()-15, self.musicSlider:getPositionY()+100)
+	self.soundSlider:setPosition(self.m_pBtnConfirm:getPositionX()-15, self.musicSlider:getPositionY()+100)
 	self:addChild(self.soundSlider, 1)
 	self.musicSlider:setEnabled(false)
 	self.soundSlider:setEnabled(false)
